@@ -5,20 +5,28 @@ const btns = document.querySelectorAll(".btn");
 // initialize the count variable
 let count = 0;
 
-btns.forEach((btn) => {
+btns.forEach((btn) =>
+{
   btn.addEventListener("click", (e) => {
     const styles = e.currentTarget.classList;
 
     if (styles.contains("increase")) {
       count++;
       counter.classList.add("up");
-
+   
       setTimeout(() => {
         counter.classList.remove("up");
       }, 500);
     } else if (styles.contains("decrease")) {
       count--;
+      
       counter.classList.add("down");
+      if(count<0){
+        count=0;
+        var er;
+        er="error : Can not go below 0"
+        document.getElementById("error").innerHTML = er;
+      }
 
       setTimeout(() => {
         counter.classList.remove("down");
